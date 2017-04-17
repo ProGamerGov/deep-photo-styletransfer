@@ -21,7 +21,7 @@ cmd:option('-content_seg', 'content_seg.jpg',
 cmd:option('-image_size', 512, 'Maximum height / width of generated image')
 cmd:option('-gpu', '0', 'Zero-indexed ID of the GPU to use; for CPU mode set -gpu = -1')
 cmd:option('-multigpu_strategy', '', 'Index of layers to split the network across GPUs')
-cmd:option('-laplacian', 'laplacian.csv', 'matting laplacian')
+cmd:option('-laplacian', '', 'matting laplacian')
 
 -- Optimization options
 cmd:option('-content_weight', 5e0)
@@ -148,12 +148,14 @@ local function main(params)
 -- segmentation images
   local style_seg_images_caffe = {}
   local content_seg = image.load(params.content_seg, 3)
+  content_seg = image.scale(content_seg, params.image_size, 'bilinear')
   local content_seg_caffe = content_seg:float()
   local style_segs = params.style_seg:split(',')
   assert(#style_segs == #style_image_list,
       '-style_seg and -style_image must have the same number of elements')
   for i, img_path in ipairs(style_segs) do
     local style_seg = image.load(img_path, 3)
+    style_seg = image.scale(style_seg, style_size, 'bilinear')
     local style_seg_caffe = style_seg:float()
     table.insert(style_seg_images_caffe, style_seg_caffe)
   end
