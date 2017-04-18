@@ -21,7 +21,7 @@ cmd:option('-content_seg', 'content_seg.jpg',
 cmd:option('-image_size', 512, 'Maximum height / width of generated image')
 cmd:option('-gpu', '0', 'Zero-indexed ID of the GPU to use; for CPU mode set -gpu = -1')
 cmd:option('-multigpu_strategy', '', 'Index of layers to split the network across GPUs')
-cmd:option('-laplacian', 'laplacian.csv', 'matting laplacian')
+cmd:option('-laplacian', '', 'matting laplacian')
 
 -- Optimization options
 cmd:option('-content_weight', 5e0)
