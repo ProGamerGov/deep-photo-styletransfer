@@ -114,6 +114,7 @@ if __name__ == "__main__":
     parser.add_argument("-eps", help="matting epsilon", default=1e-7)
     parser.add_argument("-f_radius", help="f radius", default=7)
     parser.add_argument("-f_edge", help="f edge", default=0.05)
+    parser.add_argument("-color_codes", help="Content mask colors", default='blue,green,black,white,red,yellow,grey,lightblue,purple')
     args = parser.parse_args()
 
     img_size = int(args.image_size)
@@ -205,7 +206,8 @@ if __name__ == "__main__":
                          "-patch", str(args.patch),
                          "-eps", str(args.eps),
                          "-f_radius", str(args.f_radius),
-                         "-f_edge", str(args.f_edge)]
+                         "-f_edge", str(args.f_edge),
+                         "-color_codes", str(args.color_codes)]
 
     if args.content_seg!="":
         neural_style_args+=["-content_seg", str(tmp_content_seg_name)]
