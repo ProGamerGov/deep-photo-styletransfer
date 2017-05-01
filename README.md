@@ -49,7 +49,7 @@ usage: deep_photo.py [-h] [-content_image CONTENT_IMAGE]
                      [-content_layers CONTENT_LAYERS]
                      [-style_layers STYLE_LAYERS] [-lambda PHOTO_LAMBDA]
                      [-patch PATCH] [-eps EPS] [-f_radius F_RADIUS]
-                     [-f_edge F_EDGE]
+                     [-f_edge F_EDGE] [-color_codes COLOR_CODES] 
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -111,6 +111,9 @@ optional arguments:
   -eps EPS              matting epsilon
   -f_radius F_RADIUS    f radius
   -f_edge F_EDGE        f edge
+  
+  -color_codes COLOR_CODES  content mask colors
+  
 ```
 
 ### Examples
